@@ -3,6 +3,7 @@ const Square = require('./lib/square');
 const Triangle = require('./lib/triangle');
 const inquirer = require('inquirer');
 const fs = require('fs');
+const Shape = require('./lib/shapes');
 
 
 inquirer
@@ -31,15 +32,36 @@ inquirer
     },
 
 
-]).then (function(response) {
-    render(template);
+]).then(function(response) {
+    let shape;
+    
+    switch (response.shape) {
+      case 'triangle':
+        shape = new Triangle();
+        break;
+      case 'circle':
+        shape = new Circle();
+        break;
+      case 'square':
+        shape = new Square();
+        break;
+      default:
+        console.log('Invalid shape selection.');
+        return;
+    }
+    
+    const svgContent = shape.render(response.shapeColor, response.textColor, response.text);
+  
+    fs.writeFile('logo.svg', svgContent, (error) => {
+      if (error) {
+        console.log(error);
+      } else {
+        console.log('SVG file created successfully!');
+      }
+    });
+  });
+
+    
 
 
 
-
-    fs.writeFile('logo.svg', template, (error) => {
-        if (error) {
-            console.log(error);
-        }
-    })
-})
