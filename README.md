@@ -4,6 +4,8 @@
 
 This Node.js CLI application is designed with the intent to design personal logos for a small business. This application solves the issue of a user having to source and pay for a graphic designer when needing a simple logo made for a new project. This project uses the inquirer package.
 
+Walkthrough Video: https://drive.google.com/file/d/16Gsc1i4smliaqZFHJm_5dibYshwDCxd4/view
+
 
 ## Table of Contents (Optional)
 
